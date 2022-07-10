@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { NavLink } from "react-router-dom";
 
 export const Wrapper = styled.div`
   width: 100%;
@@ -35,10 +36,52 @@ export const Header = styled.header`
     font-size: ${({ theme }) => theme.fontSizes.xlarge};
     color: ${({ theme }) => theme.colors.text};
   }
+
+  button {
+    margin-left: auto;
+  }
 `;
 
 export const Navigation = styled.nav`
   grid-column: 1 / 2;
   grid-row: 2 / 3;
   border-right: 3px solid ${({ theme }) => theme.colors.accent};
+
+  ul {
+    list-style: none;
+    margin: 0;
+    padding: 20px 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+  }
+`;
+
+const activeClassName = "active";
+export const StyledLink = styled(NavLink).attrs({ activeClassName })`
+  cursor: pointer;
+  font-weight: bold;
+  text-decoration: none;
+  color: ${({ theme }) => theme.colors.textAccent};
+  font-size: ${({ theme }) => theme.fontSizes.medium};
+  text-align: right;
+  margin: 15px 20px 15px auto;
+  position: relative;
+  &.${activeClassName} {
+    &::after {
+      opacity: 1;
+    }
+  }
+  &::after {
+    opacity: 0;
+    transition: opacity 0.4s ease-in-out;
+    content: "";
+    position: absolute;
+    width: 18px;
+    height: 3px;
+    top: 50%;
+    transform: translateY(-50%);
+    right: -20px;
+    background-color: ${({ theme }) => theme.colors.accent};
+  }
 `;
