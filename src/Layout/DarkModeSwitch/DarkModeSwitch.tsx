@@ -10,9 +10,17 @@ interface Props {
 
 const DarkModeSwitch: FC<Props> = ({ handleToggle, isDarkMode }) => {
   return (
-    <Wrapper type="button" onClick={handleToggle} isDarkMode={isDarkMode}>
+    <Wrapper
+      type="button"
+      onClick={handleToggle}
+      isDarkMode={isDarkMode}
+      aria-label="Toggle dark mode"
+    >
       <div>
-        <img src={isDarkMode ? MoonIcon : SunIcon} alt="Dark mode icon" />
+        <img
+          src={isDarkMode ? MoonIcon : SunIcon}
+          alt={isDarkMode ? "Dark mode icon" : "Light mode icon"}
+        />
       </div>
     </Wrapper>
   );

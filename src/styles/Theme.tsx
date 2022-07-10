@@ -1,7 +1,7 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { DefaultTheme, ThemeProvider } from "styled-components";
 
-const lightTheme: DefaultTheme = {
+const lightColorsTheme = {
   colors: {
     main: "#FFFDF9",
     accent: "#0683b4",
@@ -16,13 +16,16 @@ const lightTheme: DefaultTheme = {
   },
 };
 
-const darkTheme: DefaultTheme = {
+const darkColorsTheme = {
   colors: {
     main: "#181818",
     accent: "hsla(160, 100%, 37%, 1)",
     text: "#fff",
     textAccent: "rgba(235, 235, 235, 0.64)",
   },
+};
+
+const sizeTheme = {
   fontSizes: {
     small: "1rem",
     medium: "2rem",
@@ -31,15 +34,29 @@ const darkTheme: DefaultTheme = {
   },
 };
 
+const darkTheme: DefaultTheme = { ...sizeTheme, ...darkColorsTheme };
+
+const lightTheme: DefaultTheme = { ...sizeTheme, ...lightColorsTheme };
+
 interface Props {
   children: React.ReactNode;
   isDarkMode: boolean;
 }
 
-const Theme: React.FC<Props> = ({ children, isDarkMode }) => (
-  <ThemeProvider theme={isDarkMode ? darkTheme : lightTheme}>
-    {children}
-  </ThemeProvider>
-);
+const Theme: React.FC<Props> = ({ children, isDarkMode }) => {
+  const [themeObj, setThemeObj] = useState<DefaultTheme>(
+    isDarkMode ? darkTheme : lightTheme
+  );
+
+  useEffect(() => {
+    if (isDarkMode) {
+      setThemeObj(darkTheme);
+    } else {
+      setThemeObj(lightTheme);
+    }
+  }, [isDarkMode]);
+
+  return <ThemeProvider theme={themeObj}>{children}</ThemeProvider>;
+};
 
 export default Theme;
