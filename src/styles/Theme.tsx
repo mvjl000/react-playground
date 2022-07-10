@@ -1,42 +1,63 @@
 import React, { useEffect, useState } from "react";
-import { DefaultTheme, ThemeProvider } from "styled-components";
+import {
+  ColorsTheme,
+  DefaultTheme,
+  FontSizeTheme,
+  MediaQueriesTheme,
+  ThemeProvider,
+} from "styled-components";
 
-const lightColorsTheme = {
+const lightColorsTheme: ColorsTheme = {
+  main: "#FFFDF9",
+  accent: "#0683b4",
+  text: "#303030",
+  textAccent: "#797979",
+};
+
+const darkColorsTheme: ColorsTheme = {
+  main: "#181818",
+  accent: "hsla(160, 100%, 37%, 1)",
+  text: "#fff",
+  textAccent: "rgba(235, 235, 235, 0.64)",
+};
+
+const fontSizeTheme: FontSizeTheme = {
+  small: "1rem",
+  medium: "2rem",
+  large: "3rem",
+  xlarge: "4rem",
+};
+
+const mediaQueriesTheme: MediaQueriesTheme = {
+  tablet: "@media (min-width: 768px)",
+  desktop: "@media (min-width: 1024px)",
+  largeDesktop: "@media (min-width: 1280px)",
+  huge: "@media (min-width: 1440px)",
+};
+
+const darkTheme: DefaultTheme = {
   colors: {
-    main: "#FFFDF9",
-    accent: "#0683b4",
-    text: "#303030",
-    textAccent: "#797979",
+    ...darkColorsTheme,
   },
-  fontSizes: {
-    small: "1rem",
-    medium: "2rem",
-    large: "3rem",
-    xlarge: "4rem",
+  fontSize: {
+    ...fontSizeTheme,
+  },
+  mq: {
+    ...mediaQueriesTheme,
   },
 };
 
-const darkColorsTheme = {
+const lightTheme: DefaultTheme = {
   colors: {
-    main: "#181818",
-    accent: "hsla(160, 100%, 37%, 1)",
-    text: "#fff",
-    textAccent: "rgba(235, 235, 235, 0.64)",
+    ...lightColorsTheme,
+  },
+  fontSize: {
+    ...fontSizeTheme,
+  },
+  mq: {
+    ...mediaQueriesTheme,
   },
 };
-
-const sizeTheme = {
-  fontSizes: {
-    small: "1rem",
-    medium: "2rem",
-    large: "3rem",
-    xlarge: "4rem",
-  },
-};
-
-const darkTheme: DefaultTheme = { ...sizeTheme, ...darkColorsTheme };
-
-const lightTheme: DefaultTheme = { ...sizeTheme, ...lightColorsTheme };
 
 interface Props {
   children: React.ReactNode;

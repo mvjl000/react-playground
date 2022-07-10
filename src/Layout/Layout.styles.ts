@@ -33,7 +33,7 @@ export const Header = styled.header`
 
   p {
     font-weight: 500;
-    font-size: ${({ theme }) => theme.fontSizes.xlarge};
+    font-size: ${({ theme }) => theme.fontSize.xlarge};
     color: ${({ theme }) => theme.colors.text};
   }
 
@@ -63,7 +63,7 @@ export const StyledLink = styled(NavLink).attrs({ activeClassName })`
   font-weight: bold;
   text-decoration: none;
   color: ${({ theme }) => theme.colors.textAccent};
-  font-size: ${({ theme }) => theme.fontSizes.medium};
+  font-size: ${({ theme }) => theme.fontSize.medium};
   text-align: right;
   margin: 15px 20px 15px auto;
   position: relative;
