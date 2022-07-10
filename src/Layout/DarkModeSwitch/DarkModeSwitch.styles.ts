@@ -10,7 +10,7 @@ export const Wrapper = styled.button<WrapperProps>`
   height: 36px;
   border: none;
   border-radius: 18px;
-  background-color: ${({ isDarkMode }) => (isDarkMode ? "#000" : "#87CEEB")};
+  background-color: ${({ isDarkMode }) => (isDarkMode ? "#fff" : "#87CEEB")};
   position: relative;
   cursor: pointer;
 
@@ -23,8 +23,7 @@ export const Wrapper = styled.button<WrapperProps>`
     left: ${({ isDarkMode }) =>
       isDarkMode ? "calc(100% - 20px)" : "calc(0% + 20px)"};
     transform: translate(-50%, -50%);
-    background-color: ${({ isDarkMode }) =>
-      isDarkMode ? "#000" : "transparent"};
+    background-color: transparent;
     transition: 0.2s;
   }
 
